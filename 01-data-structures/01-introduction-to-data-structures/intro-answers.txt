@@ -1,0 +1,13 @@
+1. How does your data structure allow developers to access and manipulate the data?
+      line.rb allows developers to store the data in an array and manipulate the data using the class
+      methods. pixel.rb will generate a pixel based on the data passed in when generating a new instance
+      of the class.
+
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+      For line.rb a developer would use the search method. for pixel.rb a developer could search for a
+      pixel using the x and y coordinates.
+
+3. What other real-world data can each structure represent?
+      An array can represent anything that needs to be stored in a specific order like a message board
+      ordering post by newest. pixel.rb would work for any data that needs to be retrieved using a key
+      like the x,y coordinates. An example would be retrieving a user based on their email.
