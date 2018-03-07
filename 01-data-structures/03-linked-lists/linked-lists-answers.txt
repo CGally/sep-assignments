@@ -1,0 +1,17 @@
+1. What is Spatial Locality and why does it benefit performance?
+      Spacial locality is where the data is stored in memory. Array entries exist
+      in consecutive memory locations. Arrays limit the number of times the computer
+      must read from RAM, which increases performance. linked lists will be stored
+      randomly throughout the memory. This increases the number of time the computer
+      must read from the RAM, which decreases performance.
+
+2. Compare the performance of an Array to a Linked List using the Benchmark module.
+      a. Array
+        1. Create Array:                0.000000   0.000000   0.000000 (  0.000221)
+        2. Find 5000th item Array:      0.000000   0.000000   0.000000 (  0.000001)
+        3. Delete 5000th item Array:    0.000000   0.000000   0.000000 (  0.000003)
+
+      b. Linked list
+        1. Create List:                 0.000000   0.000000   0.000000 (  0.002697)
+        2. Find 5000th Node List:       0.000000   0.000000   0.000000 (  0.000097)
+        3. Delete 5000th Node List:     0.000000   0.000000   0.000000 (  0.000113)
