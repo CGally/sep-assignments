@@ -1,0 +1,6 @@
+1. Explain why doubling the size of the underlying array of your HashClass may be a poor idea.
+      Each time the computer reads from Ram it will grab a range of data and place it in the
+      cache. Doubling the size of the array when a collision occurs will lead to exponential
+      growth and bigger gaps between data in the array. So if there are big gaps in the array,
+      when the computer grabs the data from the RAM, it will be grabbing only small portion of
+      the needed data. This will lead to more reads which will lead to a decrease in performance.
