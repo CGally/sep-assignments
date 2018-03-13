@@ -1,0 +1,30 @@
+1. Describe three collision resolution strategies not mentioned here.
+      a. Coalesced hashing
+         A hybrid of chaining and open addressing. Coalesced hashing uses a similar
+         technique as separate chaining, but instead of allocating new nodes for the
+         linked list, buckets in the actual table are used.  Like chaining, the table
+         can be efficiently filled to a high density. Unlike chaining, it cannot have
+         more elements than table slots.
+      b. Hopscotch hashing
+         Hopscotch hashing combines the approaches of cuckoo hashing and linear
+         probing. The hopscotch hashing algorithm works by defining a neighborhood
+         of buckets near the original hashed bucket, where a given entry is always found.
+         The search is limited to the number of entries in this neighborhood. When
+         inserting an entry, one first attempts to add it to a bucket in the neighborhood.
+         If all buckets in this neighborhood are occupied, the algorithm traverses
+         buckets in sequence until an open slot (an unoccupied bucket) is found
+         (as in linear probing). At that point, since the empty bucket is outside
+         the neighborhood, items are repeatedly displaced in a sequence of hops.
+         Each hop brings the open slot closer to the original neighborhood, without
+         invalidating the neighborhood property of any of the buckets along the way.
+         In the end, the open slot has been moved into the neighborhood, and the entry
+         being inserted can be added to it.
+      c. Robin Hood hashing
+         Robin Hood hashing may displace a key already inserted, if its probe count
+         is larger than that of the key at the current position.
+2. Create your own collision resolution strategy and describe how it works.
+      The hash calculates two indexes using two hashing functions. If the first index
+      results in a collision, it will use the other hashing function to generate a
+      new hash code and place the entry at its alternative index. If both result in
+      a collision it will be chained to the first index. Once the load factor hits
+      0.7 it will be resized.
