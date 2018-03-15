@@ -1,0 +1,38 @@
+1. Print both Trees to the console and compare the difference between your Binary Search Tree and your Heap.
+      Binary: The Matrix: 87
+              Star Wars: Return of the Jedi: 80
+              Star Wars: A New Hope: 93
+              Pacific Rim: 72
+              Inception: 86
+              The Martian: 92
+              Star Wars: The Empire Strikes Back: 94
+              Braveheart: 78
+              The Shawshank Redemption: 91
+              Mad Max 2: The Road Warrior: 98
+              District 9: 90
+
+      heap:   Pacific Rim: 72
+              Star Wars: Return of the Jedi: 80
+              Braveheart: 78
+              Donnie Darko: 85
+              Mad Max 2: The Road Warrior: 98
+              Star Wars: The Empire Strikes Back: 94
+              Inception: 86\nThe Martian: 92
+              The Matrix: 87
+
+2. Insert all numbers from 1 to 100000 into both Trees, then use Benchmark to compare performance:
+      Insert Binary Search Tree:            0.050000   0.000000   0.050000 (  0.049202)
+      Insert Heap:                          0.030000   0.000000   0.030000 (  0.034604)
+      Find 50000th Binary Search Tree:      0.000000   0.000000   0.000000 (  0.000005)
+      Find 50000th Heap:                    0.010000   0.000000   0.010000 (  0.009552)
+      Delete 50000th Binary Search Tree:    0.000000   0.000000   0.000000 (  0.000003)
+      Delete 50000th Heap:                  0.010000   0.000000   0.010000 (  0.011789)
+
+
+3. When would you use a Binary Search Tree and why?
+      Binary search trees seem to find and delete items faster. So you would use it when
+      you need to find or delete a large number of items.
+
+4. When would you use an Heap and why?
+      Heaps seem to insert items faster. S you would use it when you have to add lots
+      of items.
