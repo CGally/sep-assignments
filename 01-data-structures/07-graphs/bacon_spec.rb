@@ -27,17 +27,18 @@ RSpec.describe Bacon, type: Class do
   let (:patrick_stewart) { Node.new("Patrick Stewart") }
   let (:christian_bale) { Node.new("Christian Bale") }
   let (:no_connection) { Node.new("No Connection") }
+  let (:no_actor) { Node.new("No Actor") }
 
   describe "successfully finds matches" do
     it "finds Chris Pratt" do
       kevin_bacon.film_actor_hash['First Film'] = [chris_hemsworth, chris_evans, robert_downey_jr]
       robert_downey_jr.film_actor_hash['First Film'] = [chris_hemsworth, chris_evans, kevin_bacon]
       chris_evans.film_actor_hash['First Film'] = [chris_hemsworth, robert_downey_jr, kevin_bacon]
-      chris_hemsworth.film_actor_hash['First Film'] = [chris_evans, robert_downey_jr, kevin_bacon]
-      chris_hemsworth.film_actor_hash['Second Film'] = [chris_pratt, paul_rudd, tom_holland]
-      chris_pratt.film_actor_hash['Second Film'] = [chris_hemsworth, paul_rudd, tom_holland]
-      paul_rudd.film_actor_hash['Second Film'] = [chris_hemsworth, chris_pratt, tom_holland]
-      tom_holland.film_actor_hash['Second Film'] = [chris_hemsworth, chris_pratt, paul_rudd]
+      chris_hemsworth.film_actor_hash['First Film'] = [robert_downey_jr, chris_evans, kevin_bacon]
+      chris_hemsworth.film_actor_hash['Second Film'] = [paul_rudd, chris_pratt, tom_holland]
+      chris_pratt.film_actor_hash['Second Film'] = [paul_rudd, chris_hemsworth, tom_holland]
+      paul_rudd.film_actor_hash['Second Film'] = [chris_pratt, chris_hemsworth, tom_holland]
+      tom_holland.film_actor_hash['Second Film'] = [chris_pratt, chris_hemsworth, paul_rudd]
       result = ["Second Film", "First Film"]
       expect(bacon.find_kevin_bacon(chris_pratt)).to eq(result)
     end
@@ -54,10 +55,10 @@ RSpec.describe Bacon, type: Class do
       mark_ruffalo.film_actor_hash['Third Film'] = [scarlett_johanssen, elizabeth_olsen]
       scarlett_johanssen.film_actor_hash['Third Film'] = [mark_ruffalo, elizabeth_olsen]
       elizabeth_olsen.film_actor_hash['Third Film'] = [mark_ruffalo, scarlett_johanssen]
-      tom_holland.film_actor_hash['Fourth Film'] = [benedicht_cumberbatch, bree_olsen, michael_b_jordan]
-      benedicht_cumberbatch.film_actor_hash['Fourth Film'] = [tom_holland, bree_olsen, michael_b_jordan]
-      bree_olsen.film_actor_hash['Fourth Film'] = [tom_holland, benedicht_cumberbatch, michael_b_jordan]
-      michael_b_jordan.film_actor_hash['Fourth Film'] = [tom_holland, benedicht_cumberbatch, bree_olsen]
+      tom_holland.film_actor_hash['Fourth Film'] = [bree_olsen, benedicht_cumberbatch, michael_b_jordan]
+      benedicht_cumberbatch.film_actor_hash['Fourth Film'] = [bree_olsen, tom_holland, michael_b_jordan]
+      bree_olsen.film_actor_hash['Fourth Film'] = [benedicht_cumberbatch, tom_holland, michael_b_jordan]
+      michael_b_jordan.film_actor_hash['Fourth Film'] = [benedicht_cumberbatch, tom_holland, bree_olsen]
       result = ["Fourth Film", "Second Film", "First Film"]
       expect(bacon.find_kevin_bacon(michael_b_jordan)).to eq(result)
     end
@@ -82,10 +83,10 @@ RSpec.describe Bacon, type: Class do
       jeremy_renner.film_actor_hash['Fifth Film'] = [michael_b_jordan, chadwick_boseman, samuel_l_jackson]
       chadwick_boseman.film_actor_hash['Fifth Film'] = [michael_b_jordan, jeremy_renner, samuel_l_jackson]
       samuel_l_jackson.film_actor_hash['Fifth Film'] = [michael_b_jordan, jeremy_renner, chadwick_boseman]
-      samuel_l_jackson.film_actor_hash['Sixth Film'] = [chris_pine, gal_gadot, bradley_cooper]
-      chris_pine.film_actor_hash['Sixth Film'] = [samuel_l_jackson, gal_gadot, bradley_cooper]
-      gal_gadot.film_actor_hash['Sixth Film'] = [samuel_l_jackson, chris_pine, bradley_cooper]
-      bradley_cooper.film_actor_hash['Sixth Film'] = [samuel_l_jackson, chris_pine, gal_gadot]
+      samuel_l_jackson.film_actor_hash['Sixth Film'] = [gal_gadot, chris_pine, bradley_cooper]
+      chris_pine.film_actor_hash['Sixth Film'] = [gal_gadot, samuel_l_jackson, bradley_cooper]
+      gal_gadot.film_actor_hash['Sixth Film'] = [chris_pine, samuel_l_jackson, bradley_cooper]
+      bradley_cooper.film_actor_hash['Sixth Film'] = [chris_pine, samuel_l_jackson, gal_gadot]
       result = ["Sixth Film", "Fifth Film", "Fourth Film", "Second Film", "First Film"]
       expect(bacon.find_kevin_bacon(gal_gadot)).to eq(result)
     end
@@ -152,7 +153,7 @@ RSpec.describe Bacon, type: Class do
       chris_pine.film_actor_hash['Sixth Film'] = [samuel_l_jackson, gal_gadot, bradley_cooper]
       gal_gadot.film_actor_hash['Sixth Film'] = [samuel_l_jackson, chris_pine, bradley_cooper]
       bradley_cooper.film_actor_hash['Sixth Film'] = [samuel_l_jackson, chris_pine, gal_gadot]
-      no_connection.film_actor_hash['Seventh Film'] = [no_connection]
+      no_connection.film_actor_hash['Seventh Film'] = [no_actor]
       result = "Can't find connection"
       expect(bacon.find_kevin_bacon(no_connection)).to eq(result)
     end
