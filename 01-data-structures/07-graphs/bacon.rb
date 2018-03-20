@@ -1,41 +1,50 @@
 require_relative 'node'
+require_relative 'film'
 
 class Bacon
+  attr_accessor :actors
 
-  attr_accessor :movies
-
-  def initialize
-    @movies = Array.new
+  def find_kevin_bacon(start_node)
+    result = search_for_kevin(start_node)
+    array = []
+    if result == false
+      return "Kevin Bacon is more than six degrees away"
+    elsif result.length == 0
+      return "Can't find connection"
+    else
+      result.each do |film|
+        array << film.title
+      end
+      return array
+    end
   end
 
-  def find_kevin_bacon(node_start)
-    actors = []
-    actors.push(node_start)
-    film_count = 0
-    while actors.length != 0
-      if film_count == 6
-        failure = "Can't find connection"
-        return failure
+  def search_for_kevin(node)
+    failure = false
+    films = []
+    node.film_actor_hash.each do |film, actors|
+      if film.kevin == true
+          films << film
+          break
       end
-
-      current = actors.shift
-      current.film_actor_hash.each do |film, other_actors|
-        if !self.movies.include?(film)
-          self.movies.push(film)
-          film_count += 1
-        end
-        other_actors.each do |actor|
-          if !actors.include?(actor)
-            if actor.name != "Kevin Bacon"
-              actors.push(actor)
-            end
+      actors.each do |actor|
+        if !actor.visited
+          actor.visited = true
+          current = search_for_kevin(actor)
+          if !current
+            return failure
           end
-          if actor.name == "Kevin Bacon"
-            return self.movies
+          if current.length != 0
+            films << film
+            films += current
           end
         end
       end
     end
-    return "Can't find connection"
+    if films.uniq.length >= 6
+      return failure
+    end
+      return films.uniq
   end
+
 end
