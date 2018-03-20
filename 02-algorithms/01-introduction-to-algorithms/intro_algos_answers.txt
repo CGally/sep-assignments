@@ -1,0 +1,88 @@
+
+Calculating a tip:
+
+    READ total on check
+
+    IF service was greater than or equal to good THEN
+      DETERMINE Tip by multiplying the total by 0.20
+      RETURN Tip
+    ELSE
+      DETERMINE Tip by multiplying the total by 0.15
+      RETURN Tip
+    ENDIF
+
+
+
+Laundry:
+  Check laundry basket
+
+  IF laundry basket is full
+    Decide to do laundry
+    Separate whites and darks
+
+    WHILE there is still dirty whites
+      IF machine is not running
+          IF washing machine is empty
+            put whites in washing machine
+            add 1 cup of bleach and turn on machine
+          ELSE IF dryer is empty
+            Move clean clothes to the dryer and turn on dryer
+            put whites in washing machine
+            add 1 cup of bleach and turn on washing machine
+          ELSE
+            Move dry clothes to empty laundry basket
+            Move clean clothes to the dryer and turn on dryer
+            put whites in washing machine
+            add 1 cup of bleach and turn on washing machine
+          ENDIF
+        ENDIF
+      ENDWHILE
+
+      WHILE there is still dirty darks
+        IF machine is not running
+            IF washing machine is empty
+              put darks in washing machine
+              add 1 cup of detergent and turn on machine
+            ELSE IF dryer is empty
+              Move clean clothes to the dryer and turn on dryer
+              put darks in washing machine
+              add 1 cup of detergent and turn on machine
+            ELSE
+              Move dry clothes to empty laundry basket
+              Move clean clothes to the dryer and turn on dryer
+              put darks in washing machine
+              add 1 cup of detergent and turn on machine
+            ENDIF
+          ENDIF
+        ENDWHILE
+
+      Fold clean laundry
+      RETURN folded laundry
+    ELSE
+      Don't do laundry
+    ENDIF
+
+
+
+Getting ready for work:
+    READ work schedule
+
+    IF I don't have to work today
+      Go back to bed
+    ELSE
+      GET current Time
+
+      IF Time is greater than 8am THEN
+        Put on clean clothes
+        Drive to work
+      ELSE IF Time is greater than 7:30am THEN
+        Shower
+        Put on clean clothes
+        Drive to work
+      ELSE IF Time is greater than 7:00am THEN
+        Make breakfast
+        Shower
+        Put on clean cloths
+        Drive to work
+      ENDIF
+    ENDIF
