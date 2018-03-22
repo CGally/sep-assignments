@@ -1,0 +1,20 @@
+1. Using Ruby's benchmark module, measure the time it takes for all of the sorting
+   algorithms discussed in this checkpoint to sort a collection of fifty items. Use
+   your output to create a bar chart.
+                               user     system      total        real
+        Insertion Sort:    1.910000   0.000000   1.910000 (  1.911192)
+        Selection Sort:    2.170000   0.000000   2.170000 (  2.173105)
+        Bubble Sort:       0.000000   0.000000   0.000000 (  0.000453)
+        Merge Sort:        0.070000   0.030000   0.100000 (  0.091560)
+        Quick Sort:        0.350000   0.000000   0.350000 (  0.346006)
+        Heap Sort:         0.000000   0.000000   0.000000 (  0.002124)
+        Bucket Sort:       0.050000   0.000000   0.050000 (  0.045777)
+
+
+2. Looking at the bar chart, speculate on why you think some sort algorithms are
+   faster than others and provide rationale as to your thought process.
+        The sorting algorithms that are iterating over an array in a single function call
+        (insertion, selection, bubble) might be faster for small data sets (bubble also
+        seems fast with large data sets). The other algorithms seem faster for large data sets
+        and probably have better worse case scenarios than bubble sort. Bucket sort seems to
+        depend on the sorting algorithm used to sort the buckets.
