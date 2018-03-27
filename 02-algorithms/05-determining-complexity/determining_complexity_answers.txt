@@ -1,0 +1,132 @@
+What's the Big-O of the following algorithms? Submit your work and reasoning with your solution.
+
+1. def goodbye_world(n)
+     puts "Goodbye World! #{n}"
+   end
+
+        The Big-O is O(1). This program always takes the same amount of time to execute.
+
+
+2. def find_largest(collection)
+     largest = collection[0]
+     collection.length.times do |i|
+       if collection[i] >= largest
+         largest = collection[i]
+       end
+     end
+     largest
+    end
+
+          The Big-O is O(n). The worst-case scenario is if the last item in the collection
+          is the largest. As collection grows in size, the number of operations  also grows
+          at the same rate.
+
+
+3. def find_largest(collection)
+     largest = collection[0][0]
+     collection.length.times do |i|
+       subcollection = collection[i]
+       subcollection.length.times do |i|
+         if subcollection[i] >= largest
+           largest = subcollection[i]
+         end
+       end
+     end
+     largest
+   end
+
+        a. Assuming n is the total number of elements in just the collection, The Big-O is O(2^n).
+           The worst-case scenario is if the sub-collections have an extremely large number of
+           elements and the largest is the last element of the last sub-collection. So even if
+           the collection has only a few elements, the algorithm could be performing a large number
+           of operations.
+
+        b. Assuming n is the total number of elements in all the sub-arrays, The Big-O is O(n).
+           The worst-case scenario is if the last item in the last sub-collection is the largest.
+           As collection + sub-collections grow in size, the number of operations also grows at the
+           same rate.
+
+
+4. def numbers(n)
+     if (n == 0)
+       return 0
+     elsif (n == 1)
+       return 1
+     else
+       return numbers(n-1) + numbers(n-2)
+     end
+   end
+
+        The Big-O is O(2^n). This function recursively calls on itself twice. With each layer of
+        recursive calls the size grows exponentially with it.
+
+
+5. def iterative(n)
+     num1 = 0
+     num2 = 1
+
+     i = 0
+     while i < n-1
+       tmp = num1 + num2
+       num1 = num2
+       num2 = tmp
+       i+=1
+     end
+
+     num2
+   end
+
+        The Big-O is O(n). It will loop n times in the while loop. As n increases, the number of operations
+        also grows at the same rate.
+
+
+6. def sort(collection, from=0, to=nil)
+     if to == nil
+       to = collection.count - 1
+     end
+
+     if from >= to
+       return
+     end
+
+     pivot = collection[from]
+
+     min = from
+     max = to
+
+     free = min
+
+     while min < max
+       if free == min # Evaluate collection[max]
+         if collection[max] <= pivot # Smaller than pivot, must move
+           collection[free] = collection[max]
+           min += 1
+           free = max
+         else
+           max -= 1
+         end
+       elsif free == max # Evaluate collection[min]
+         if collection[min] >= pivot # Bigger than pivot, must move
+           collection[free] = collection[min]
+           max -= 1
+           free = min
+         else
+           min += 1
+         end
+       else
+         raise "Inconsistent state"
+       end
+     end
+
+     collection[free] = pivot
+
+     sort collection, from, free - 1
+     sort collection, free + 1, to
+
+     collection
+   end
+
+        The Big-O is O(n^2). The worst case scenario is when the pivot is the smallest or the
+        largest element in the collection each time the function is called recursively. This will
+        lead to one side having no elements and the other having n-1 elements with each function
+        call. This will lead us to make n−1 nested calls before we reach a list of size 1.
