@@ -1,0 +1,52 @@
+1. Describe an analogy for relating an algorithm that has efficiency O(1) and another
+   algorithm that has O(2n). An example would be:
+        An algorithm that has O(1) is a Motorcycle and an algorithm that has O(2n) is
+        a tricycle.
+
+2. In plain English, what is the best case scenario for binary search?
+        The best-case scenario is constant time. No matter the size of n, the algorithm
+        always takes the same amount of time to execute. This is the fastest an
+        algorithm can operate.
+
+3. In plain English, what is the worst-case scenario for binary search?
+        The worst-case scenario is logarithmic time. As the size of n grows, the time it
+        takes the algorithm to execute and complete grows faster than constant time.
+        Logarithmic time algorithms are slower than constant time algorithms.
+
+4. In plain English, what is the bounded-case scenario for binary search?
+        The bounded-case scenario is logarithmic time. As the size of n grows, the time
+        it takes the algorithm to execute and complete grows faster than constant time.
+        Logarithmic time algorithms are slower than constant time algorithms.
+
+5. Create a graph using the data below. Here's a CSV with the values you'll need.
+        https://docs.google.com/spreadsheets/d/1bL_MKaZP9YbEfLMEzqQgVDqxAFFnQZfNNkB54S67AXg/edit#gid=0
+
+6. What is the limit of the function above as n approaches infinity?
+        infinity
+
+7. What is the Big-O of an algorithm that has the data points above?
+        O(n^2)
+
+8. Write a Ruby method that takes a number n. This method must print the worst-case
+   number of iterations for linear search to find an item in collections of size one to
+   n. Use it to generate a table of worst-case iterations of collections up to size 10.
+        def worst(n)
+          iterations = 1
+          n.times do
+            print "Collection length: #{iterations}, Worst-case :#{iterations}"
+            iterations += 1
+          end
+        end
+
+9. Create a graph from the output using Google Sheets or other graphing software. Analyze
+   the graph and denote its Big-O somewhere on the graph.
+        https://docs.google.com/spreadsheets/d/1bL_MKaZP9YbEfLMEzqQgVDqxAFFnQZfNNkB54S67AXg/edit#gid=0
+
+10. What is the Big-O of binary search?
+        O(log n)
+
+11. What is the Big-Ω of binary search?
+        O(1)
+
+12. What is the Big-Ө of binary search?
+        O(log n)
