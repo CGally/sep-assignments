@@ -1,0 +1,11 @@
+1. This insertion sort and the Big-O is O(n^2).
+
+2. I used merge sort and the Big-O is O(n log n), which is better than insertion sort.
+
+3. I used bubble sort and the Big-O is O(1) for space complexity, though insertion sort is also O(1) for space complexity.
+
+Benchmark Results
+Original:     0.990000   0.000000   0.990000 (  0.990902)
+Optimized:    0.930000   0.000000   0.930000 (  0.931199)
+Time:         0.120000   0.030000   0.150000 (  0.150144)
+Space:        5.520000   0.000000   5.520000 (  5.525301)
